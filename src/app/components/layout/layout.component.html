@@ -1,0 +1,50 @@
+<!-- Vertical navbar -->
+<div [ngClass]="setCssClassActive('vertical-nav bg-white')" id="sidebar">
+    <div class="py-4 px-3 mb-4 bg-light">
+        <div class="row mx-0 justify-content-end">
+            <button (click)="isOpen=!isOpen" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-2 mb-2 col-5"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 7.5H26M4 15H26M4 22.5H26" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg></button>
+        </div>
+        <div class="media d-flex align-items-center"><img src="https://bootstrapious.com/i/snippets/sn-v-nav/avatar.png"
+                alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+            <div class="media-body">
+                <h4 class="m-0"> Admin</h4>
+            </div>
+        </div>
+    </div>
+
+    <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>
+
+    <ul class="nav flex-column bg-white mb-0">
+        @for (item of menuOption; track item; let idx = $index) {
+        <li class="nav-item" [routerLink]="item.url"routerLinkActive="bg-light">
+            <p class="nav-link text-dark font-italic ">
+                <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+                {{item.nombre}}
+            </p>
+        </li>
+        }
+
+
+    </ul>
+</div>
+<!-- End vertical navbar -->
+
+
+<!-- Page content holder -->
+<div [ngClass]="setCssClassActive('page-content p-5')" id="content">
+    @if(!isOpen){
+        <div class="row mx-0 justify-content-start">
+            <button (click)="isOpen=!isOpen" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-2 mb-2 col-md-1 col-2">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 7.5H26M4 15H26M4 22.5H26" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg></button>
+        </div>
+        
+    
+    }
+    <router-outlet />
+
+</div>
+<!-- End demo content -->

@@ -1,0 +1,21 @@
+<div class="row d-flex p-md-5">
+    <div class="col-12 p-md-3 p-2">
+        <h3>Libros Prestados al usuario</h3>
+    </div>
+    @for (item of prestados; track item;) {
+        <div class="col-md-4 p-1 ">
+            <div class="card p-md-2 p-1 border border-dark rounded">
+                <div class="text-center p-0 w-100"><small>ID: {{item.idPrestamo}}</small> </div>
+                <div class="text-center"> <span class="text-uppercase "><b>{{item.nombreLibro}}</b></span> </div>
+                <div class="text-center mb-0"> <span class="text-uppercase"><small><b>Fecha De inicio :</b>{{ item.fechaInicio | date: "dd/MM/yyyy"}}</small></span> </div>
+                <div class="text-center mb-0"> <span class="text-uppercase"><small><b>Fecha a entregar</b>{{ item.fechaMaximaEntrega | date: "dd/MM/yyyy"}}</small></span> </div>
+            </div>
+        </div>
+    }
+    <div class="col-12 p-md-3 p-2">
+        <div class="row mx-0 justify-content-end">
+            <button  (click)="activeModal.close()" class="btn btn-block btn-dark col-md-4 col-8 ">Cerrar</button>
+
+        </div>
+    </div>
+</div>

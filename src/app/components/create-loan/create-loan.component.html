@@ -1,0 +1,51 @@
+<div class="row mx-0">
+    <form [formGroup]="loanForm" (ngSubmit)="loanRegister()" class="row mx-0">
+        <div class="col-md-4">
+            <label for="visually-hidden">Identificación Usuario</label>
+            <input type="text" class="form-control" formControlName="identificacionUsuario">
+            @if(identificacionUsuario?.invalid && (identificacionUsuario?.dirty || identificacionUsuario?.touched)){
+                <div class="text-danger">
+                @if(identificacionUsuario?.errors?.['required']){
+                    <p >Es requerido.</p>
+                }
+                @if(identificacionUsuario?.errors?.['maxlength'] || identificacionUsuario?.errors?.['minlength']){
+                    <p >Son 10 caractaeres.</p>
+                }
+                </div>
+            }
+        </div>
+          <div class="col-md-4">
+              <label for="visually-hidden">ISBN</label>
+              <input type="text" class="form-control" formControlName="isbn">
+              @if(isbn?.invalid && (isbn?.dirty || isbn?.touched)){
+                <div class="text-danger">
+                @if(isbn?.errors?.['required']){
+                    <p >Es requerido.</p>
+                }
+                @if(isbn?.errors?.['maxlength'] || isbn?.errors?.['minlength']){
+                    <p >Son 10 caractaeres.</p>
+                }
+                </div>
+            }
+          </div>
+          <div class="col-md-4">
+            <label for="visually-hidden">Tipo Usuario</label>
+            <select class="form-select form-select-lg mb-3" aria-label="Large select example" formControlName="tipoUsuario">
+                <option selected>Seleccionar usuario</option>
+                <option value="1">Afiliado</option>
+                <option value="2">Empleado</option>
+                <option value="3">Invitado</option>
+              </select>
+          </div>
+          <div class="row mx-0 justify-content-end">
+            <input type="submit" value="Agregar" class="btn btn-block btn-dark col-md-4 col-8 ">
+        </div>
+    </form>
+</div>
+@if(prestamoResponse.id!=0){
+    <div class="row">
+        Se ha realizado el préstamo con Id: <b>{{prestamoResponse.id}} , tiene hasta el
+            {{prestamoResponse.fechaMaximaDevolucion | date: "dd/MM/yyyy"}}
+        </b>
+    </div>
+}
